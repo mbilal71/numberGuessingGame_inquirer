@@ -2,7 +2,7 @@
 import chalk from "chalk";
 import inquirer from "inquirer";
 async function playMore() {
-    let secretNum = Math.floor(Math.random() * 100);
+    let secretNum = Math.floor(Math.random() * 101);
     async function playGame() {
         let usersInput = await inquirer.prompt({
             name: "userInput",
@@ -13,6 +13,9 @@ async function playMore() {
         if (userInput === secretNum) {
             console.log(chalk.inverse(`Congratulations!!! You have guess the right number.`));
             return true;
+        }
+        else if (isNaN(userInput) || userInput < 1 || userInput > 100) {
+            console.log(chalk.yellowBright("Invalid input! Please enter a number between 1 and 100."));
         }
         else {
             if (userInput > secretNum) {
@@ -49,15 +52,15 @@ async function playMore() {
     console.log(chalk.yellowBright.bold(`You have attempted ${attempts} times to guess the right number...`));
     console.log();
     console.log();
-    console.log(chalk.redBright(`       ###     ###     ###  ######  ###    ###`));
-    console.log(chalk.magentaBright(`     ### ### ### ###    ####    ###    ### `));
-    console.log(chalk.greenBright(`         ###     ###      ######  ###### ######   `));
+    console.log(chalk.redBright(`        ###     ###     ###  ######  ###    ###`));
+    console.log(chalk.magentaBright(`      ### ### ### ###    ####    ###    ###`));
+    console.log(chalk.greenBright(`          ###     ###      ######  ###### ######   `));
     console.log();
-    console.log(chalk.cyanBright(`       ######        #####     ####    ##  #######`));
-    console.log(chalk.yellowBright(`     ###   ##    ###   ###   ## ##   ##  ###`));
-    console.log(chalk.blueBright(`       ###    ##  ##       ##  ##  ##  ##  #####`));
-    console.log(chalk.grey(`             ###   ##    ###   ###   ##   ## ##  ###`));
-    console.log(chalk.greenBright(`      ######        #####     ##    ####  #######`));
+    console.log(chalk.cyanBright(`     ######        #####     ####    ##  #######`));
+    console.log(chalk.yellowBright(`   ###   ##    ###   ###   ## ##   ##  ###`));
+    console.log(chalk.blueBright(`     ###    ##  ##       ##  ##  ##  ##  #####`));
+    console.log(chalk.grey(`           ###   ##    ###   ###   ##   ## ##  ###`));
+    console.log(chalk.greenBright(`    ######        #####     ##    ####  #######`));
     console.log();
     console.log();
     console.log();
